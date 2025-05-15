@@ -35,7 +35,7 @@ export default function App() {
   };
 
   const getPlayerImage = (id) => {
-    return \`https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/\${id}.png\`;
+    return `https://ak-static.cms.nba.com/wp-content/uploads/headshots/nba/latest/260x190/${id}.png`;
   };
 
   const handleVote = (playerId) => {
@@ -49,7 +49,9 @@ export default function App() {
     <div className="p-4 space-y-4">
       <div className="flex justify-between items-center">
         <h1 className="text-xl font-bold">Pick Your Favorite NBA Player</h1>
-        <button onClick={fetchPlayers} className="border rounded px-4 py-2 bg-blue-500 text-white">New Matchup</button>
+        <button onClick={fetchPlayers} className="border rounded px-4 py-2 bg-blue-500 text-white">
+          New Matchup
+        </button>
       </div>
 
       {loading ? (
@@ -60,7 +62,7 @@ export default function App() {
             <div key={player.id} className="text-center border rounded p-4">
               <img
                 src={getPlayerImage(player.id)}
-                alt={\`\${player.first_name} \${player.last_name}\`}
+                alt={`${player.first_name} ${player.last_name}`}
                 className="w-full h-40 object-contain mb-2"
                 onError={(e) => (e.target.src = "/placeholder.png")}
               />
@@ -69,7 +71,10 @@ export default function App() {
               </p>
               <p className="text-sm text-gray-500">{player.team.full_name}</p>
               <p className="text-sm text-gray-600">Votes: {votes[player.id] || 0}</p>
-              <button className="mt-2 w-full border rounded bg-green-500 text-white py-1" onClick={() => handleVote(player.id)}>
+              <button
+                className="mt-2 w-full border rounded bg-green-500 text-white py-1"
+                onClick={() => handleVote(player.id)}
+              >
                 Choose
               </button>
             </div>
